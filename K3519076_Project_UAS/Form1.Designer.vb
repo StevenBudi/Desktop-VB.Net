@@ -35,18 +35,24 @@ Partial Class Form1
         Me.SingleZeroButton = New System.Windows.Forms.Button()
         Me.CommaButton = New System.Windows.Forms.Button()
         Me.TripleZeroButton = New System.Windows.Forms.Button()
-        Me.Button14 = New System.Windows.Forms.Button()
+        Me.Equal = New System.Windows.Forms.Button()
         Me.AddButton = New System.Windows.Forms.Button()
         Me.SubstractButton = New System.Windows.Forms.Button()
         Me.MultiplyButton = New System.Windows.Forms.Button()
         Me.ModuloButton = New System.Windows.Forms.Button()
         Me.DivideButton = New System.Windows.Forms.Button()
         Me.RootButton = New System.Windows.Forms.Button()
-        Me.OpenSignButton = New System.Windows.Forms.Button()
-        Me.CloseSignButton = New System.Windows.Forms.Button()
+        Me.CosButton = New System.Windows.Forms.Button()
+        Me.SinButton = New System.Windows.Forms.Button()
         Me.ExponentButton = New System.Windows.Forms.Button()
         Me.ClearButton = New System.Windows.Forms.Button()
         Me.BackspaceButton = New System.Windows.Forms.Button()
+        Me.HistoryButton = New System.Windows.Forms.Button()
+        Me.LogButton = New System.Windows.Forms.Button()
+        Me.TanButton = New System.Windows.Forms.Button()
+        Me.TanMinButton = New System.Windows.Forms.Button()
+        Me.SinMinButton = New System.Windows.Forms.Button()
+        Me.CosMinButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ButtonOne
@@ -206,17 +212,17 @@ Partial Class Form1
         Me.TripleZeroButton.Text = "000"
         Me.TripleZeroButton.UseVisualStyleBackColor = False
         '
-        'Button14
+        'Equal
         '
-        Me.Button14.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Button14.Font = New System.Drawing.Font("Bookman Old Style", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button14.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Button14.Location = New System.Drawing.Point(225, 447)
-        Me.Button14.Name = "Button14"
-        Me.Button14.Size = New System.Drawing.Size(225, 61)
-        Me.Button14.TabIndex = 18
-        Me.Button14.Text = "="
-        Me.Button14.UseVisualStyleBackColor = False
+        Me.Equal.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Equal.Font = New System.Drawing.Font("Bookman Old Style", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Equal.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Equal.Location = New System.Drawing.Point(225, 447)
+        Me.Equal.Name = "Equal"
+        Me.Equal.Size = New System.Drawing.Size(225, 61)
+        Me.Equal.TabIndex = 18
+        Me.Equal.Text = "="
+        Me.Equal.UseVisualStyleBackColor = False
         '
         'AddButton
         '
@@ -290,29 +296,29 @@ Partial Class Form1
         Me.RootButton.Text = "√"
         Me.RootButton.UseVisualStyleBackColor = False
         '
-        'OpenSignButton
+        'CosButton
         '
-        Me.OpenSignButton.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.OpenSignButton.Font = New System.Drawing.Font("Bookman Old Style", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.OpenSignButton.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.OpenSignButton.Location = New System.Drawing.Point(225, 246)
-        Me.OpenSignButton.Name = "OpenSignButton"
-        Me.OpenSignButton.Size = New System.Drawing.Size(71, 61)
-        Me.OpenSignButton.TabIndex = 25
-        Me.OpenSignButton.Text = "("
-        Me.OpenSignButton.UseVisualStyleBackColor = False
+        Me.CosButton.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.CosButton.Font = New System.Drawing.Font("Bookman Old Style", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CosButton.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.CosButton.Location = New System.Drawing.Point(225, 246)
+        Me.CosButton.Name = "CosButton"
+        Me.CosButton.Size = New System.Drawing.Size(71, 61)
+        Me.CosButton.TabIndex = 25
+        Me.CosButton.Text = "Cos"
+        Me.CosButton.UseVisualStyleBackColor = False
         '
-        'CloseSignButton
+        'SinButton
         '
-        Me.CloseSignButton.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.CloseSignButton.Font = New System.Drawing.Font("Bookman Old Style", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CloseSignButton.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.CloseSignButton.Location = New System.Drawing.Point(302, 246)
-        Me.CloseSignButton.Name = "CloseSignButton"
-        Me.CloseSignButton.Size = New System.Drawing.Size(71, 61)
-        Me.CloseSignButton.TabIndex = 26
-        Me.CloseSignButton.Text = ")"
-        Me.CloseSignButton.UseVisualStyleBackColor = False
+        Me.SinButton.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.SinButton.Font = New System.Drawing.Font("Bookman Old Style", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SinButton.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.SinButton.Location = New System.Drawing.Point(302, 246)
+        Me.SinButton.Name = "SinButton"
+        Me.SinButton.Size = New System.Drawing.Size(71, 61)
+        Me.SinButton.TabIndex = 26
+        Me.SinButton.Text = "Sin"
+        Me.SinButton.UseVisualStyleBackColor = False
         '
         'ExponentButton
         '
@@ -350,24 +356,102 @@ Partial Class Form1
         Me.BackspaceButton.Text = "←"
         Me.BackspaceButton.UseVisualStyleBackColor = False
         '
+        'HistoryButton
+        '
+        Me.HistoryButton.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.HistoryButton.Font = New System.Drawing.Font("Bookman Old Style", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.HistoryButton.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.HistoryButton.Location = New System.Drawing.Point(12, 124)
+        Me.HistoryButton.Name = "HistoryButton"
+        Me.HistoryButton.Size = New System.Drawing.Size(207, 55)
+        Me.HistoryButton.TabIndex = 35
+        Me.HistoryButton.Text = "History"
+        Me.HistoryButton.UseVisualStyleBackColor = False
+        '
+        'LogButton
+        '
+        Me.LogButton.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.LogButton.Font = New System.Drawing.Font("Bookman Old Style", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LogButton.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.LogButton.Location = New System.Drawing.Point(225, 124)
+        Me.LogButton.Name = "LogButton"
+        Me.LogButton.Size = New System.Drawing.Size(71, 55)
+        Me.LogButton.TabIndex = 36
+        Me.LogButton.Text = "log"
+        Me.LogButton.UseVisualStyleBackColor = False
+        '
+        'TanButton
+        '
+        Me.TanButton.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.TanButton.Font = New System.Drawing.Font("Bookman Old Style", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TanButton.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.TanButton.Location = New System.Drawing.Point(225, 185)
+        Me.TanButton.Name = "TanButton"
+        Me.TanButton.Size = New System.Drawing.Size(71, 55)
+        Me.TanButton.TabIndex = 37
+        Me.TanButton.Text = "Tan"
+        Me.TanButton.UseVisualStyleBackColor = False
+        '
+        'TanMinButton
+        '
+        Me.TanMinButton.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.TanMinButton.Font = New System.Drawing.Font("Bookman Old Style", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TanMinButton.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.TanMinButton.Location = New System.Drawing.Point(154, 185)
+        Me.TanMinButton.Name = "TanMinButton"
+        Me.TanMinButton.Size = New System.Drawing.Size(65, 55)
+        Me.TanMinButton.TabIndex = 38
+        Me.TanMinButton.Text = "-Tan"
+        Me.TanMinButton.UseVisualStyleBackColor = False
+        '
+        'SinMinButton
+        '
+        Me.SinMinButton.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.SinMinButton.Font = New System.Drawing.Font("Bookman Old Style", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SinMinButton.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.SinMinButton.Location = New System.Drawing.Point(83, 185)
+        Me.SinMinButton.Name = "SinMinButton"
+        Me.SinMinButton.Size = New System.Drawing.Size(65, 55)
+        Me.SinMinButton.TabIndex = 39
+        Me.SinMinButton.Text = "-Sin"
+        Me.SinMinButton.UseVisualStyleBackColor = False
+        '
+        'CosMinButton
+        '
+        Me.CosMinButton.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.CosMinButton.Font = New System.Drawing.Font("Bookman Old Style", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CosMinButton.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.CosMinButton.Location = New System.Drawing.Point(12, 185)
+        Me.CosMinButton.Name = "CosMinButton"
+        Me.CosMinButton.Size = New System.Drawing.Size(65, 55)
+        Me.CosMinButton.TabIndex = 40
+        Me.CosMinButton.Text = "-Cos"
+        Me.CosMinButton.UseVisualStyleBackColor = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDark
         Me.ClientSize = New System.Drawing.Size(462, 519)
+        Me.Controls.Add(Me.CosMinButton)
+        Me.Controls.Add(Me.SinMinButton)
+        Me.Controls.Add(Me.TanMinButton)
+        Me.Controls.Add(Me.TanButton)
+        Me.Controls.Add(Me.LogButton)
+        Me.Controls.Add(Me.HistoryButton)
         Me.Controls.Add(Me.BackspaceButton)
         Me.Controls.Add(Me.ClearButton)
         Me.Controls.Add(Me.ExponentButton)
-        Me.Controls.Add(Me.CloseSignButton)
-        Me.Controls.Add(Me.OpenSignButton)
+        Me.Controls.Add(Me.SinButton)
+        Me.Controls.Add(Me.CosButton)
         Me.Controls.Add(Me.RootButton)
         Me.Controls.Add(Me.DivideButton)
         Me.Controls.Add(Me.ModuloButton)
         Me.Controls.Add(Me.MultiplyButton)
         Me.Controls.Add(Me.SubstractButton)
         Me.Controls.Add(Me.AddButton)
-        Me.Controls.Add(Me.Button14)
+        Me.Controls.Add(Me.Equal)
         Me.Controls.Add(Me.TripleZeroButton)
         Me.Controls.Add(Me.CommaButton)
         Me.Controls.Add(Me.SingleZeroButton)
@@ -401,16 +485,22 @@ Partial Class Form1
     Friend WithEvents SingleZeroButton As Button
     Friend WithEvents CommaButton As Button
     Friend WithEvents TripleZeroButton As Button
-    Friend WithEvents Button14 As Button
+    Friend WithEvents Equal As Button
     Friend WithEvents AddButton As Button
     Friend WithEvents SubstractButton As Button
     Friend WithEvents MultiplyButton As Button
     Friend WithEvents ModuloButton As Button
     Friend WithEvents DivideButton As Button
     Friend WithEvents RootButton As Button
-    Friend WithEvents OpenSignButton As Button
-    Friend WithEvents CloseSignButton As Button
+    Friend WithEvents CosButton As Button
+    Friend WithEvents SinButton As Button
     Friend WithEvents ExponentButton As Button
     Friend WithEvents ClearButton As Button
     Friend WithEvents BackspaceButton As Button
+    Friend WithEvents HistoryButton As Button
+    Friend WithEvents LogButton As Button
+    Friend WithEvents TanButton As Button
+    Friend WithEvents TanMinButton As Button
+    Friend WithEvents SinMinButton As Button
+    Friend WithEvents CosMinButton As Button
 End Class

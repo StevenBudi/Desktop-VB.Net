@@ -1,8 +1,11 @@
-﻿Public Class Form1
+﻿Imports MySql.Data.MySqlClient
+Public Class Form1
 
     Dim Transaction As String = "0"
+    Dim TransactionLog = ""
     Dim restrict = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        openConnection()
         DisplayBox.Padding = New Padding(5, 5, 5, 5)
         DisplayBox.AutoSize = False
         DisplayBox.Text = Transaction
@@ -23,6 +26,7 @@
     Private Sub SingleZeroButton_Click(sender As Object, e As EventArgs) Handles SingleZeroButton.Click
         If Transaction <> "0" Then
             Transaction += "0"
+            TransactionLog += "0"
         End If
         DisplayBox.Text = Transaction
     End Sub
@@ -30,6 +34,7 @@
     Private Sub TripleZeroButton_Click(sender As Object, e As EventArgs) Handles TripleZeroButton.Click
         If Transaction <> "0" Then
             Transaction += "000"
+            TransactionLog += "000"
         End If
         DisplayBox.Text = Transaction
     End Sub
@@ -38,11 +43,14 @@
         If Transaction.Length > 0 Then
             If Transaction.Contains(",") Then
                 Transaction += ""
+                TransactionLog += ""
             Else
                 Transaction += ","
+                TransactionLog += ","
             End If
         Else
             Transaction += "0,"
+            TransactionLog += "0,"
         End If
         DisplayBox.Text = Transaction
     End Sub
@@ -53,6 +61,7 @@
         Else
             Transaction += "1"
         End If
+        TransactionLog += "1"
         DisplayBox.Text = Transaction
     End Sub
 
@@ -62,6 +71,7 @@
         Else
             Transaction += "2"
         End If
+        TransactionLog += "2"
         DisplayBox.Text = Transaction
     End Sub
 
@@ -71,6 +81,7 @@
         Else
             Transaction += "3"
         End If
+        TransactionLog += "3"
         DisplayBox.Text = Transaction
     End Sub
 
@@ -80,6 +91,7 @@
         Else
             Transaction += "4"
         End If
+        TransactionLog += "4"
         DisplayBox.Text = Transaction
     End Sub
 
@@ -89,6 +101,7 @@
         Else
             Transaction += "5"
         End If
+        TransactionLog += "5"
         DisplayBox.Text = Transaction
     End Sub
 
@@ -98,6 +111,7 @@
         Else
             Transaction += "6"
         End If
+        TransactionLog += "6"
         DisplayBox.Text = Transaction
     End Sub
 
@@ -107,6 +121,7 @@
         Else
             Transaction += "7"
         End If
+        TransactionLog += "7"
         DisplayBox.Text = Transaction
     End Sub
 
@@ -116,6 +131,7 @@
         Else
             Transaction += "8"
         End If
+        TransactionLog += "8"
         DisplayBox.Text = Transaction
     End Sub
 
@@ -125,50 +141,67 @@
         Else
             Transaction += "9"
         End If
+        TransactionLog += "9"
         DisplayBox.Text = Transaction
     End Sub
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        Dim confirmationBox As DialogResult = MessageBox.Show("Simpan Ke Database", "Konfirmasi", MessageBoxButtons.YesNo)
+        If confirmationBox = DialogResult.Yes Then
+            Try
+                insertData(TransactionLog, Transaction)
+            Catch ex As Exception
+                MessageBox.Show(ex.ToString)
+            End Try
+        End If
         Transaction = "0"
+        Transaction = Transaction
         DisplayBox.Text = Transaction
     End Sub
 
     Private Sub BackspaceButton_Click(sender As Object, e As EventArgs) Handles BackspaceButton.Click
         Transaction = Transaction.Substring(0, Transaction.Length - 1)
+        TransactionLog = Transaction
         DisplayBox.Text = Transaction
     End Sub
 
     Private Sub ModuloButton_Click(sender As Object, e As EventArgs) Handles ModuloButton.Click
         Calculate(Transaction)
         Transaction += "%"
+        TransactionLog += "%"
         DisplayBox.Text = Transaction
     End Sub
 
     Private Sub DivideButton_Click(sender As Object, e As EventArgs) Handles DivideButton.Click
         Calculate(Transaction)
         Transaction += "/"
+        TransactionLog += "/"
         DisplayBox.Text = Transaction
     End Sub
 
     Private Sub AddButton_Click(sender As Object, e As EventArgs) Handles AddButton.Click
         Calculate(Transaction)
         Transaction += "+"
+        TransactionLog += "+"
         DisplayBox.Text = Transaction
     End Sub
 
     Private Sub SubstractButton_Click(sender As Object, e As EventArgs) Handles SubstractButton.Click
         Calculate(Transaction)
         Transaction += "-"
+        TransactionLog += "-"
         DisplayBox.Text = Transaction
     End Sub
 
     Private Sub MultiplyButton_Click(sender As Object, e As EventArgs) Handles MultiplyButton.Click
         Calculate(Transaction)
         Transaction += "*"
+        TransactionLog += "*"
         DisplayBox.Text = Transaction
     End Sub
 
     Sub AdvanceCalculate(Query As String, caseCalculation As String)
+        Query = Query.Replace(",", ".")
         Dim calculationRestrict = "+/%x-"
         Dim res = Transaction
         Dim able = 0
@@ -182,19 +215,43 @@
             Select Case [caseCalculation]
                 Case "power"
                     res = Math.Pow(Integer.Parse(Query), 2)
+                    TransactionLog += "^2"
                 Case "root"
                     res = Math.Sqrt(Integer.Parse(Query))
+                    TransactionLog = "√(" & TransactionLog & ")"
+                Case "log"
+                    res = Math.Log(Integer.Parse(Query))
+                    TransactionLog = "log(" & TransactionLog & ")"
+                Case "sin"
+                    res = Math.Round(Math.Sin(Double.Parse(res) * 4 * Math.Atan(1) / 180), 4)
+                    TransactionLog = "sin(" & TransactionLog & ")"
+                Case "cos"
+                    res = Math.Round(Math.Cos(Double.Parse(res) * 4 * Math.Atan(1) / 180), 4)
+                    TransactionLog = "cos(" & TransactionLog & ")"
+                Case "tan"
+                    res = Math.Round(Math.Tan(Double.Parse(res) * 4 * Math.Atan(1) / 180), 4)
+                    TransactionLog = "tan(" & TransactionLog & ")"
+                Case "sinh"
+                    res = Math.Round(Math.Sinh(Double.Parse(res) * 4 * Math.Atan(1) / 180), 4)
+                    TransactionLog = "sinh(" & TransactionLog & ")"
+                Case "cosh"
+                    res = Math.Round(Math.Cosh(Double.Parse(res) * 4 * Math.Atan(1) / 180), 4)
+                    TransactionLog = "cosh(" & TransactionLog & ")"
+                Case "tanh"
+                    res = Math.Round(Math.Tanh(Double.Parse(res) * 4 * Math.Atan(1) / 180), 4)
+                    TransactionLog = "tanh(" & TransactionLog & ")"
             End Select
         End If
         Transaction = res
 
     End Sub
     Sub Calculate(Query As String)
+        Query = Query.Replace(",", ".")
         Dim res = New DataTable().Compute(Query, Nothing)
         Transaction = res
     End Sub
 
-    Private Sub Button14_Click(sender As Object, e As EventArgs) Handles Button14.Click
+    Private Sub Equal_Click(sender As Object, e As EventArgs) Handles Equal.Click
         Calculate(Transaction)
         DisplayBox.Text = Transaction
     End Sub
@@ -207,5 +264,44 @@
     Private Sub RootButton_Click(sender As Object, e As EventArgs) Handles RootButton.Click
         AdvanceCalculate(Transaction, "root")
         DisplayBox.Text = Transaction
+    End Sub
+
+    Private Sub LogButton_Click(sender As Object, e As EventArgs) Handles LogButton.Click
+        AdvanceCalculate(Transaction, "log")
+        DisplayBox.Text = Transaction
+    End Sub
+
+    Private Sub TanButton_Click(sender As Object, e As EventArgs) Handles TanButton.Click
+        AdvanceCalculate(Transaction, "tan")
+        DisplayBox.Text = Transaction
+    End Sub
+
+    Private Sub SinButton_Click(sender As Object, e As EventArgs) Handles SinButton.Click
+        AdvanceCalculate(Transaction, "sin")
+        DisplayBox.Text = Transaction
+    End Sub
+
+    Private Sub CosButton_Click(sender As Object, e As EventArgs) Handles CosButton.Click
+        AdvanceCalculate(Transaction, "cos")
+        DisplayBox.Text = Transaction
+    End Sub
+
+    Private Sub CosMinButton_Click(sender As Object, e As EventArgs) Handles CosMinButton.Click
+        AdvanceCalculate(Transaction, "cosh")
+        DisplayBox.Text = Transaction
+    End Sub
+
+    Private Sub SinMinButton_Click(sender As Object, e As EventArgs) Handles SinMinButton.Click
+        AdvanceCalculate(Transaction, "sinh")
+        DisplayBox.Text = Transaction
+    End Sub
+
+    Private Sub TanMinButton_Click(sender As Object, e As EventArgs) Handles TanMinButton.Click
+        AdvanceCalculate(Transaction, "tanh")
+        DisplayBox.Text = Transaction
+    End Sub
+
+    Private Sub HistoryButton_Click(sender As Object, e As EventArgs) Handles HistoryButton.Click
+        Form2.Show()
     End Sub
 End Class
