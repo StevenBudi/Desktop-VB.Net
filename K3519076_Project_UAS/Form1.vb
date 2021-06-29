@@ -44,6 +44,9 @@ Public Class Form1
             If Transaction.Contains(",") Then
                 Transaction += ""
                 TransactionLog += ""
+            ElseIf Transaction.Substring(1, Transaction.Length - 1) = "+" Or Transaction.Substring(1, Transaction.Length - 1) = "-" Or Transaction.Substring(1, Transaction.Length - 1) = "/" Or Transaction.Substring(1, Transaction.Length - 1) = "*" Or Transaction.Substring(1, Transaction.Length - 1) = "%" Then
+                Transaction += "0,"
+                TransactionLog += "0,"
             Else
                 Transaction += ","
                 TransactionLog += ","
@@ -155,13 +158,13 @@ Public Class Form1
             End Try
         End If
         Transaction = "0"
-        Transaction = Transaction
+        TransactionLog = Transaction
         DisplayBox.Text = Transaction
     End Sub
 
     Private Sub BackspaceButton_Click(sender As Object, e As EventArgs) Handles BackspaceButton.Click
         Transaction = Transaction.Substring(0, Transaction.Length - 1)
-        TransactionLog = Transaction
+        TransactionLog = TransactionLog.Substring(0, TransactionLog.Length - 1)
         DisplayBox.Text = Transaction
     End Sub
 
@@ -202,6 +205,7 @@ Public Class Form1
 
     Sub AdvanceCalculate(Query As String, caseCalculation As String)
         Query = Query.Replace(",", ".")
+        Calculate(Query)
         Dim calculationRestrict = "+/%x-"
         Dim res = Transaction
         Dim able = 0
@@ -214,13 +218,13 @@ Public Class Form1
         If able = 5 Then
             Select Case [caseCalculation]
                 Case "power"
-                    res = Math.Pow(Integer.Parse(Query), 2)
+                    res = Math.Pow(Double.Parse(Query), 2)
                     TransactionLog += "^2"
                 Case "root"
-                    res = Math.Sqrt(Integer.Parse(Query))
+                    res = Math.Sqrt(Double.Parse(Query))
                     TransactionLog = "√(" & TransactionLog & ")"
                 Case "log"
-                    res = Math.Log(Integer.Parse(Query))
+                    res = Math.Log(Double.Parse(Query))
                     TransactionLog = "log(" & TransactionLog & ")"
                 Case "sin"
                     res = Math.Round(Math.Sin(Double.Parse(res) * 4 * Math.Atan(1) / 180), 4)
