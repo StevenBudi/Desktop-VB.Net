@@ -24,7 +24,6 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -32,6 +31,7 @@ Partial Class Form1
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -54,16 +54,6 @@ Partial Class Form1
         Me.Label2.Size = New System.Drawing.Size(249, 25)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "STMIK Bina Sarana Global"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.Project_UAS2.My.Resources.Resources.clipart2180744
-        Me.PictureBox1.Location = New System.Drawing.Point(35, 173)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(128, 115)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
         '
         'TextBox1
         '
@@ -102,7 +92,7 @@ Partial Class Form1
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(133, 424)
+        Me.Label5.Location = New System.Drawing.Point(117, 410)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(240, 17)
         Me.Label5.TabIndex = 7
@@ -125,6 +115,16 @@ Partial Class Form1
         Me.Button2.TabIndex = 9
         Me.Button2.Text = "Batal"
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.Project_UAS2.My.Resources.Resources.clipart2180744
+        Me.PictureBox1.Location = New System.Drawing.Point(35, 173)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(128, 115)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 2
+        Me.PictureBox1.TabStop = False
         '
         'Form1
         '
